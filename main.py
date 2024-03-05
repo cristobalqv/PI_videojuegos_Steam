@@ -56,7 +56,8 @@ def userdata(user_id:str):
     total_reviews = len(df_reviews['user_id'].unique())
     # porcentaje de recomendaciones 
     porcentaje_recomendaciones = (total_recomendaciones/total_reviews)*100
-
+    
+    #algunos valores pueden ser nulo, por lo que la api no los reconoce y no corre las instrucciones, por lo que agregamos un condicional para count_items
     count_items = count_items if not pd.isnull(count_items) else 0
       
     diccionario = {'usuario': user_id,
