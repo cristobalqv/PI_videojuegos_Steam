@@ -2,9 +2,21 @@
 from fastapi import FastAPI
 import pandas as pd
 import uvicorn 
+import os
+
+# Ruta del directorio donde se encuentra el script main.py
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Retroceder un nivel en la estructura de directorios para llegar al directorio padre
+parent_dir = os.path.abspath(os.path.join(script_dir, os.pardir))
+
+# Construir la ruta relativa al archivo Parquet
+parquet_file_path = os.path.join(parent_dir, "Proyecto Individual 1", "bases de datos", "df_items_developer_unido.parquet")
+
+
 
 # DATASETS
-df_items_developer = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_items_developer_unido.parquet')
+df_items_developer = pd.read_parquet(parquet_file_path)
 df_reviews = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\dfreviews_unido.parquet')
 df_gastos_items = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_gastos_items_unido.parquet')
 dfdesarrolladores_recomendados = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\dfdesarrolladores_recomendados_unido.parquet')
