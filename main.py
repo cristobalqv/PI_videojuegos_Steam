@@ -6,11 +6,11 @@ import uvicorn
 
 
 # DATASETS
-df_items_developer = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_items_developer_unido.parquet')
-df_reviews = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\dfreviews_unido.parquet')
-df_gastos_items = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_gastos_items_unido.parquet')
-dfdesarrolladores_recomendados = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\dfdesarrolladores_recomendados_unido.parquet')
-df_playtime_forever = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_playtime_forever_unido.parquet')
+df_items_developer = pd.read_csv('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_items_developer_unido.csv')
+df_reviews = pd.read_csv('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\dfreviews_unido.csv')
+df_gastos_items = pd.read_csv('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_gastos_items_unido.csv')
+dfdesarrolladores_recomendados = pd.read_csv('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\dfdesarrolladores_recomendados_unido.csv')
+df_playtime_forever = pd.read_csv('C:\\Users\\cquir\\OneDrive\\Escritorio\\Data Science SH\\Proyecto Individual 1\\bases de datos\\df_playtime_forever_unido.csv')
 
 
 
