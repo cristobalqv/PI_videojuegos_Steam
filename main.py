@@ -109,8 +109,8 @@ def BestDeveloperYear(year: int):
 
 
 # FUNCION DEVELOPER_REVIEWS_ANALYSIS 
-@app.get("/DeveloperReviewsAnalysis/{desarrollador}")
-def DeveloperReviewsAnalysis(desarrollador: str): 
+@app.get("/developerreviewsanalysis/{desarrollador}")
+def developerreviewsanalysis(desarrollador: str): 
     '''Según el desarrollador, se devuelve un diccionario con el nombre del desarrollador como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor positivo o negativo.'''
     # filtro por desarrollador
     filtro_desarrollador = dfdesarrolladores_recomendados[dfdesarrolladores_recomendados['developer'] == desarrollador]
@@ -119,7 +119,9 @@ def DeveloperReviewsAnalysis(desarrollador: str):
     
     sentimientos_negativos = filtro_desarrollador[filtro_desarrollador['sentiment_analysis'] == 0]['sentiment_analysis'].count()
 
-    diccionario = {desarrollador:[{'Positivos': sentimientos_positivos, 'Negativos': sentimientos_negativos}]}
+    diccionario = {'Desarrollador': desarrollador,
+                   'Positivos': int(sentimientos_positivos),
+                   'Negativos': int(sentimientos_negativos)}
 
     return diccionario
 
