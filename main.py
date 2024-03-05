@@ -88,7 +88,11 @@ def UserForGenre(genre):
 @app.get("/BestDeveloperYear/{year}")
 def BestDeveloperYear(year: int): 
     '''Devuelve el top 3 de desarrolladores con juegos MÁS recomendados por usuarios para el año dado (reviews.recommend = True y comentarios positivos)'''
-    año_seleccionado = dfdesarrolladores_recomendados[dfdesarrolladores_recomendados['anio_lanzamiento'] == year]
+    # Filtrar solo valores numéricos y convertirlos a entero
+    df_filtrado = dfdesarrolladores_recomendados[dfdesarrolladores_recomendados['anio_lanzamiento'].apply(lambda x: x.isdigit())]
+    df_filtrado['anio_lanzamiento'] = df_filtrado['anio_lanzamiento'].astype(int) #Con esto filtro solo por valores numericos para que fastapi los pueda leer
+
+    año_seleccionado = df_filtrado[df_filtrado['anio_lanzamiento'] == year]
     # juegos recomendados con sentimiento positivo
     recomendados_positivos = año_seleccionado[(año_seleccionado['reviews_recommend'] == True) & (año_seleccionado['sentiment_analysis'] == 2)]
 
