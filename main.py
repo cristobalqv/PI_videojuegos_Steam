@@ -2,6 +2,8 @@
 from fastapi import FastAPI
 import pandas as pd
 import uvicorn 
+from mangum import Mangum
+
 
 
 # DATASETS
@@ -15,6 +17,8 @@ df_playtime_forever = pd.read_parquet('C:\\Users\\cquir\\OneDrive\\Escritorio\\D
 
 # Iniciamos aplicacion
 app = FastAPI()
+
+handler = Mangum(app)
 
 
 
