@@ -5,28 +5,16 @@ El objetivo de este proyecto consiste en situarnos en el rol de un *MLOps Engine
 
 ### PROCEDIMIENTO
 #### Transformación y Limpieza de Datos (ETL)
-Se realizó la extracción, transformación y carga (ETL) de los tres conjuntos de datos entregados. Dos de los conjuntos de datos se encontraban anidados, es decir había columnas con diccionarios o listas de diccionarios, por lo que aplicaron distintas estrategias para transformar las claves de esos diccionarios en columnas. Luego se rellenaron algunos nulos de variables necesarias para el proyecto, se borraron columnas con muchos nulos o que no aportaban al proyecto, para optimizar el rendimiento de la API y teneniendo en cuenta las limitaciones de almacenamiento del deploy. Para las transformaciones se utilizó la librería Pandas.
+Se aplicaron técnicas de Extracción, Transformación y Carga (ETL) para procesar y limpiar los 3 conjuntos de datos. 
 
-Los detalles del ETL se puede ver en ETL output_steam_games, ETL australian_users_items y ETL australian_user_reviews.
-
-Feature engineering
-Uno de los pedidos para este proyecto fue aplicar un análisis de sentimiento a los reviews de los usuarios. Para ello se creó una nueva columna llamada 'sentiment_analysis' que reemplaza a la columna que contiene los reviews donde clasifica los sentimientos de los comentarios con la siguiente escala:
-
-Por otra parte, y bajo el mismo criterio de optimizar los tiempos de respuesta de las consultas en la API y teniendo en cuenta las limitaciones de almacenamiento en el servicio de nube para deployar la API, se realizaron dataframes auxiliares para cada una de las funciones solicitadas. En el mismo sentido, se guardaron estos dataframes en formato parquet que permite una compresión y codificación eficiente de los datos.
-
-Todos los detalles del desarrollo se pueden ver en la Jupyter Notebook 01d_Feature_eng.
-
-#### ANÁLISIS EXPLORATORIO DE DATOS (EDA)
-Se realizó el EDA a los tres conjuntos de datos sometidos a ETL con el objetivo de identificar las variables que se pueden utilizar en la creación del modelo de recmendación. Para ello se utilizó la librería Pandas para la manipulación de los datos y las librerías Matplotlib y Seaborn para la visualización.
-
-En particular para el modelo de recomendación, se terminó eligiendo construir un dataframe específico con el id del usuario que realizaron reviews, los nombres de los juegos a los cuales se le realizaron comentarios y una columna de rating que se construyó a partir de la combinación del análisis de sentimiento y la recomendación a los juegos.
-
-El desarrollo de este análisis se encuentra en la Jupyter Notebook EDA
-
+Archivos: 
+[1a ETL games.ipynb](https://github.com/cristobalqv/PI_videojuegos_Steam/blob/main/JupyterNotebooks/1a%20ETL%20games.ipynb "1a ETL games.ipynb")
+[1b ETL reviews.ipynb](https://github.com/cristobalqv/PI_videojuegos_Steam/blob/main/JupyterNotebooks/1b%20ETL%20reviews.ipynb "1b ETL reviews.ipynb")
+[1c ETL items.ipynb](https://github.com/cristobalqv/PI_videojuegos_Steam/blob/main/JupyterNotebooks/1c%20ETL%20items.ipynb "1c ETL items.ipynb")
 
 
 #### DESARROLLO DE API
-Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
+Se crearon las siguientes funciones y se utilizó el framework FastAPI:
 
 userdata: Esta función tiene por parámentro 'user_id' y devulve la cantidad de dinero gastado por el usuario, el porcentaje de recomendaciones que realizó sobre la cantidad de reviews que se analizan y la cantidad de items que consume el mismo.
 
@@ -49,6 +37,17 @@ NOTA: ambas funciones, recomendacion_juego y recomendacion_usuario se agregaron 
 El desarrollo de las funciones de consultas generales se puede ver en la Jupyter Notebook 02_funcionesAPI. El desarrollo del código para las funciones del modelo de recomendación se puede ver en la Jupyter Notebook 04_Modelo_recomendacion
 
 El código para generar la API se encuentra en el archivo main.py y las funciones para su funcionamiento se encuentran en api_functions. En caso de querer ejecutar la API desde localHost se deben seguir los siguientes pasos:
+
+#### ANÁLISIS EXPLORATORIO DE DATOS (EDA)
+Se realizó el EDA a los tres conjuntos de datos sometidos a ETL con el objetivo de identificar las variables que se pueden utilizar en la creación del modelo de recmendación. Para ello se utilizó la librería Pandas para la manipulación de los datos y las librerías Matplotlib y Seaborn para la visualización.
+
+En particular para el modelo de recomendación, se terminó eligiendo construir un dataframe específico con el id del usuario que realizaron reviews, los nombres de los juegos a los cuales se le realizaron comentarios y una columna de rating que se construyó a partir de la combinación del análisis de sentimiento y la recomendación a los juegos.
+
+El desarrollo de este análisis se encuentra en la Jupyter Notebook EDA
+
+
+
+
 
 #### MODELO DE MACHINE LEARNING
 
