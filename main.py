@@ -137,13 +137,6 @@ def developerreviewsanalysis(desarrollador: str):
 @app.get("/RecomendacionJuego/{juego}")
 def RecomendacionJuego(juego: str):
     '''Muestra una lista de juegos similares a un juego dado.'''
-    count = 1
-    print('juegos similares a {} incluyen:\n'.format(juego))
-    for item in item_sim_df.sort_values(by=juego, ascending=False).index[1:6]:
-        print('No. {}: {}'.format(count,item))
-        count += 1
-
-'''
     similar_games = item_sim_df.sort_values(by=juego, ascending=False).iloc[1:6]
     count = 1
     contador = 1
@@ -157,6 +150,6 @@ def RecomendacionJuego(juego: str):
             contador += 1 
         else:
             break
-    return recomendaciones'''
+    return recomendaciones
 
 
