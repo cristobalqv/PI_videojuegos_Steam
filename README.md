@@ -4,7 +4,7 @@
 El objetivo de este proyecto consiste en situarnos en el rol de un *MLOps Engineer* y poder crear un sistema de recomendación de videojuegos basado en un conjunto de datos predefinidos de la plataforma Steam. Estas tareas y procedimientos están enfocadas principalmente en la Extracción, Transformación y Carga de datos (ETL), análisis exploratorio de datos (EDA), junto con la epxloración y entrenamiento de un modelo de Machine Learning. Finaliza con el deployment de los datos en FastAPI y renderización en Render para su posterior uso en los entornos productivos
 
 ### PROCEDIMIENTO
-##### Transformación y Limpieza de Datos (ETL)
+#### Transformación y Limpieza de Datos (ETL)
 Se realizó la extracción, transformación y carga (ETL) de los tres conjuntos de datos entregados. Dos de los conjuntos de datos se encontraban anidados, es decir había columnas con diccionarios o listas de diccionarios, por lo que aplicaron distintas estrategias para transformar las claves de esos diccionarios en columnas. Luego se rellenaron algunos nulos de variables necesarias para el proyecto, se borraron columnas con muchos nulos o que no aportaban al proyecto, para optimizar el rendimiento de la API y teneniendo en cuenta las limitaciones de almacenamiento del deploy. Para las transformaciones se utilizó la librería Pandas.
 
 Los detalles del ETL se puede ver en ETL output_steam_games, ETL australian_users_items y ETL australian_user_reviews.
@@ -16,7 +16,7 @@ Por otra parte, y bajo el mismo criterio de optimizar los tiempos de respuesta d
 
 Todos los detalles del desarrollo se pueden ver en la Jupyter Notebook 01d_Feature_eng.
 
-##### ANÁLISIS EXPLORATORIO DE DATOS (EDA)
+#### ANÁLISIS EXPLORATORIO DE DATOS (EDA)
 Se realizó el EDA a los tres conjuntos de datos sometidos a ETL con el objetivo de identificar las variables que se pueden utilizar en la creación del modelo de recmendación. Para ello se utilizó la librería Pandas para la manipulación de los datos y las librerías Matplotlib y Seaborn para la visualización.
 
 En particular para el modelo de recomendación, se terminó eligiendo construir un dataframe específico con el id del usuario que realizaron reviews, los nombres de los juegos a los cuales se le realizaron comentarios y una columna de rating que se construyó a partir de la combinación del análisis de sentimiento y la recomendación a los juegos.
@@ -25,7 +25,7 @@ El desarrollo de este análisis se encuentra en la Jupyter Notebook EDA
 
 
 
-##### DESARROLLO DE API
+#### DESARROLLO DE API
 Para el desarrolo de la API se decidió utilizar el framework FastAPI, creando las siguientes funciones:
 
 userdata: Esta función tiene por parámentro 'user_id' y devulve la cantidad de dinero gastado por el usuario, el porcentaje de recomendaciones que realizó sobre la cantidad de reviews que se analizan y la cantidad de items que consume el mismo.
@@ -50,7 +50,7 @@ El desarrollo de las funciones de consultas generales se puede ver en la Jupyter
 
 El código para generar la API se encuentra en el archivo main.py y las funciones para su funcionamiento se encuentran en api_functions. En caso de querer ejecutar la API desde localHost se deben seguir los siguientes pasos:
 
-##### MODELO DE MACHINE LEARNING
+#### MODELO DE MACHINE LEARNING
 
 Modelo de aprendizaje automático
 Se crearon dos modelos de recomendación, que generan cada uno, una lista de 5 juegos ya sea ingresando el nombre de un juego o el id de un usuario.
@@ -64,7 +64,7 @@ Para medir la similitud entre los juegos (item_similarity) y entre los usuarios 
 El desarrollo para la creación de los dos modelos se presenta en la Jupyter Notebook 04_Modelo_recomendacion.
 
 
-##### DESPLIEGUE DE API
+#### DESPLIEGUE DE API
 
 ### ANEXO: VIDEO
 En este video se explica brevemente este proyecto mostrando el funcionamiento de la API.
