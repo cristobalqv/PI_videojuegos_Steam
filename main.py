@@ -11,6 +11,7 @@ df_reviews = pd.read_parquet('C:/Users/cquir/OneDrive/Escritorio/Data Science SH
 df_gastos_items = pd.read_parquet('C:/Users/cquir/OneDrive/Escritorio/Data Science SH/Proyecto Individual 1/bases de datos/df_gastos_items_unido.parquet')
 dfdesarrolladores_recomendados = pd.read_parquet('C:/Users/cquir/OneDrive/Escritorio/Data Science SH/Proyecto Individual 1/bases de datos/dfdesarrolladores_recomendados_unido.parquet')
 df_playtime_forever = pd.read_parquet('C:/Users/cquir/OneDrive/Escritorio/Data Science SH/Proyecto Individual 1/bases de datos/df_playtime_forever_unido.parquet')
+item_sim_df = pd.read_parquet('C:/Users/cquir/OneDrive/Escritorio/Data Science SH/Proyecto Individual 1/bases de datos/item_sim_df.parquet')
 
 
 
@@ -135,10 +136,20 @@ def developerreviewsanalysis(desarrollador: str):
 #FUNCION RECOMENDACION_JUEGO
 @app.get("/RecomendacionJuego/{juego}")
 def RecomendacionJuego(juego: str):
+    '''Muestra una lista de juegos similares a un juego dado.'''
+    similar_games = item_sim_df.sort_values(by=juego, ascending=False).iloc[1:6]
     count = 1
-    print('juegos similares a {} incluyen:\n'.format(game))
-    for item in item_sim_df.sort_values(by=game, ascending=False).index[1:6]:
-        print('No. {}: {}'.format(count,item))
-        count += 1
+    contador = 1
+    recomendaciones = {}
+    
+    for item in similar_games:
+        if contador <= 5:
+            item = str(item)
+            recomendaciones[count] = item
+            count += 1
+            contador += 1 
+        else:
+            break
+    return recomendaciones
 
 
