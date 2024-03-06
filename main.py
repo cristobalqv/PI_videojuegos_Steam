@@ -98,9 +98,9 @@ def BestDeveloperYear(year: int):
     año_seleccionado = df_filtrado[df_filtrado['anio_lanzamiento'] == year]
     # juegos recomendados con sentimiento positivo
     recomendados_positivos = año_seleccionado[(año_seleccionado['reviews_recommend'] == True) & (año_seleccionado['sentiment_analysis'] == 2)]
-
+    # agrupamos por desarrollador y calculamos la cantidad de sentimientos positivos y recomendaciones
     agrupado = recomendados_positivos.groupby('developer')[['reviews_recommend', 'sentiment_analysis']].count()
-
+    # creamos una nueva columna para calcular la sumatoria total de estas variables
     agrupado['suma'] = agrupado['reviews_recommend'] + agrupado['sentiment_analysis']
 
     top3 = agrupado['suma'].sort_values(ascending=False).nlargest(3).to_dict()
