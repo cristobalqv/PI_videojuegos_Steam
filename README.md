@@ -51,6 +51,9 @@ Archivo:
 #### *DESPLIEGUE DE API*
 Para el deploy de la API, se utilizó el framework FastAPI, y para un acceso mas práctico se tenía contemplado la renderización mediante Render, la cual es una plataforma que permite la creación y ejecución de apps y webs. Sin embargo, no se pudo completar aquella solicitud debido a problemas de renderización que fueron constantes y por el momento, sin solución (se explica en el video anexo)
 
+Archivo:
+- [main.py](https://github.com/cristobalqv/PI_videojuegos_Steam/blob/main/main.py "main.py")
+
 
 ## ANEXO: VIDEO
 Video que explica brevemente los procedimientos señalados anteriormente
